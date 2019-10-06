@@ -1,0 +1,13 @@
+{
+    "name": "Jonah",
+    "age": 19,
+    "of_age": false,
+    "classes": [
+        "Calculus",
+        "C++"
+    ],
+    "dog": {
+        "name": "Zeke",
+        "age": 6
+    }
+}
