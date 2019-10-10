@@ -15,7 +15,7 @@ JObject* JSONDocument::parseFromFile(const std::string &path) {
     fread(buffer, 1, size, file);
     fclose(file);
     buffer[size] = '\0';
-    
+
     JObject* root = parse(buffer);
     delete[] buffer;
     
@@ -32,13 +32,17 @@ JObject* JSONDocument::parse(const std::string& src) {
     int lexi = 0;
     int index = 0;
     int depth = 0;
+    bool in_string = false;
     
     while (buffer[index] != '\0') {
         
         while (!is_special(buffer[index])) {
-            if (is_ws(buffer[index])) { index++; continue; }
+            if (buffer[index] == '"') { in_string = !in_string; }
+            if (is_ws(buffer[index]) && !in_string) { index++; continue; }
             lex[lexi++] = buffer[index++];
         }
+
+        if (buffer[index] == '\0') break;
         
         if (lexi == 0)  {
             switch (buffer[index]) {
@@ -167,7 +171,7 @@ JObject* JSONDocument::parse(const std::string& src) {
 }
 
 bool JSONDocument::is_special(char c) {
-    return (c == '{' || c == ':' || c == ',' || c == '}' || c == '[' || c == ']');
+    return (c == '{' || c == ':' || c == ',' || c == '}' || c == '[' || c == ']' || c == '\0');
 }
 
 bool JSONDocument::is_ws(char c) {
