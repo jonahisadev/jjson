@@ -1,13 +1,3 @@
 {
-    "name": "Jonah",
-    "age": 19,
-    "of_age": false,
-    "classes": [
-        "Calculus 2",
-        "C++"
-    ],
-    "dog": {
-        "name": "Zeke",
-        "age": 6
-    }
+    "array": [0, 12, -69]
 }
