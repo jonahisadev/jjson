@@ -45,7 +45,7 @@ JObject* JSONDocument::parse(const std::string& src) {
         if (buffer[index] == '\0') break;
         
         if (lexi == 0)  {
-            std::cout << "Lexer: " << buffer[index] << std::endl;
+            // std::cout << "Lexer: " << buffer[index] << std::endl;
             switch (buffer[index]) {
                 case '{': {
                     JSON_LOG("New object (name: %s)\n", current_str.c_str());
@@ -97,7 +97,7 @@ JObject* JSONDocument::parse(const std::string& src) {
         }
         
         lex[lexi] = '\0';
-        std::cout << "Lexer: " << lex << std::endl;
+        // std::cout << "Lexer: " << lex << std::endl;
         
         // String
         if (lex[0] == '"' && lex[strlen(lex) - 1] == '"') {

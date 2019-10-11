@@ -5,7 +5,7 @@
 
 // Change this in compilation to
 // remove JSON logging
-#define JSON_DEBUG
+//#define JSON_DEBUG
 
 #ifndef JSON_DEBUG
 #define JSON_LOG(x, ...)
